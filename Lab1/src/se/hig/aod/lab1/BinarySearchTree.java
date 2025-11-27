@@ -3,7 +3,6 @@ package se.hig.aod.lab1;
 public class BinarySearchTree<T extends Comparable<? super T>> implements SearchableDataStructure<T> {
 
     class TreeNode {
-
         T element;
         TreeNode left;
         TreeNode right;
@@ -14,11 +13,12 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements Search
     }
 
     TreeNode root;
+    int size = 0;
 
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'size'");
+        
+        return size;
     }
 
     @Override
@@ -26,14 +26,10 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements Search
         root = addElementHelper(root, newElement);
     }
 
-    public TreeNode addElementHelper(TreeNode root, T node) {
-
-        T data = node;
-
-        if (data == null) {
-            root = (BinarySearchTree<T>.TreeNode) data;
-            return root;
-        } else if (data.compareTo(root.element) < 0) {
+    private TreeNode addElementHelper(TreeNode root, T node) {
+        if (root == null) {
+            return new TreeNode(node);
+        } else if (node.compareTo(root.element) < 0) {
             root.left = addElementHelper(root.left, node);
         } else {
             root.right = addElementHelper(root.right, node);
@@ -47,11 +43,11 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements Search
         return searchElementHelper(root, elementToFind);
     }
 
-    public T searchElementHelper(TreeNode root, T node) {
+    private T searchElementHelper(TreeNode root, T node) {
 
         T data = node;
 
-        if (data.compareTo(root.element) == 0) {
+        if (node.compareTo(root.element) == 0) {
             return data;
         } else if (data.compareTo(root.element) < 0) {
             root.left = (TreeNode) searchElementHelper(root.left, node);
