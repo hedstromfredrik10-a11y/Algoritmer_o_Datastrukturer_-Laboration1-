@@ -44,8 +44,25 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements Search
 
     @Override
     public T searchElement(T elementToFind) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'searchElement'");
+        return searchElementHelper(root, elementToFind);
+    }
+
+    public T searchElementHelper(TreeNode root, T node) {
+
+        T data = node;
+
+        if (data.compareTo(root.element) == 0) {
+            return data;
+        } else if (data.compareTo(root.element) < 0) {
+            root.left = (TreeNode) searchElementHelper(root.left, node);
+        } else if (data.compareTo(root.element) > 0) {
+            root.right = (TreeNode) searchElementHelper(root.right, node);
+        } else {
+            data = null;
+        }
+
+        return data;
+
     }
 
 }
