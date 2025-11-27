@@ -1,7 +1,51 @@
 package se.hig.aod.lab1;
 
-public class BinarySearchTree {
-    public static void main(String[] args) {
-        System.out.println("hej");
+public class BinarySearchTree<T extends Comparable<? super T>> implements SearchableDataStructure<T> {
+
+    class TreeNode {
+
+        T element;
+        TreeNode left;
+        TreeNode right;
+
+        public TreeNode(T element) {
+            this.element = element;
+        }
     }
+
+    TreeNode root;
+
+    @Override
+    public int size() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'size'");
+    }
+
+    @Override
+    public void addElement(T newElement) {
+        root = addElementHelper(root, newElement);
+    }
+
+    public TreeNode addElementHelper(TreeNode root, T node) {
+
+        T data = node;
+
+        if (data == null) {
+            root = (BinarySearchTree<T>.TreeNode) data;
+            return root;
+        } else if (data.compareTo(root.element) < 0) {
+            root.left = addElementHelper(root.left, node);
+        } else {
+            root.right = addElementHelper(root.right, node);
+        }
+
+        return root;
+    }
+
+    @Override
+    public T searchElement(T elementToFind) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'searchElement'");
+    }
+
 }
