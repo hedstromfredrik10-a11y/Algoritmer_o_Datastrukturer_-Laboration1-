@@ -17,7 +17,6 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements Search
 
     @Override
     public int size() {
-        
         return size;
     }
 
@@ -28,8 +27,11 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements Search
 
     private TreeNode addElementHelper(TreeNode root, T node) {
         if (root == null) {
+            size++;
             return new TreeNode(node);
-        } else if (node.compareTo(root.element) < 0) {
+        }
+
+        if (node.compareTo(root.element) < 0) {
             root.left = addElementHelper(root.left, node);
         } else {
             root.right = addElementHelper(root.right, node);
@@ -44,21 +46,35 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements Search
     }
 
     private T searchElementHelper(TreeNode root, T node) {
-
-        T data = node;
-
-        if (node.compareTo(root.element) == 0) {
-            return data;
-        } else if (data.compareTo(root.element) < 0) {
-            root.left = (TreeNode) searchElementHelper(root.left, node);
-        } else if (data.compareTo(root.element) > 0) {
-            root.right = (TreeNode) searchElementHelper(root.right, node);
-        } else {
-            data = null;
+        if (root == null) {
+            return null;
         }
 
-        return data;
+        if (node.compareTo(root.element) == 0) {
 
+            return root.element;
+        } else if (node.compareTo(root.element) < 0) {
+            return searchElementHelper(root.left, node);
+        } else {
+            return searchElementHelper(root.right, node);
+        }
+
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        inOrderTraversal(root, sb);
+        return sb.toString().trim();
+    }
+
+    private void inOrderTraversal(TreeNode node, StringBuilder sb) {
+        if (node == null) {
+            return;
+        }
+        inOrderTraversal(node.left, sb);
+        sb.append(node.element).append(" ");
+        inOrderTraversal(node.right, sb);
     }
 
 }
