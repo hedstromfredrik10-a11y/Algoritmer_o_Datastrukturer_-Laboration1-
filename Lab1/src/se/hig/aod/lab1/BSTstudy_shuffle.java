@@ -9,6 +9,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Performs empirical performance studies of searching
+ * in a Binary Search Tree.
+ * <p>
+ * The class measures execution times for search operations
+ * using randomly ordered data.
+ */
 public class BSTstudy_shuffle {
     public static void main(String[] args) throws Exception {
         String path = "unique_integers.txt";

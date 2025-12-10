@@ -8,6 +8,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import se.hig.aod.lab1.BinarySearchTree;
 
+/**
+ * Unit tests for the BinarySearchTree class.
+ */
+
 public class BinarySearchTreeTest {
     private BinarySearchTree<Integer> bst;
 
