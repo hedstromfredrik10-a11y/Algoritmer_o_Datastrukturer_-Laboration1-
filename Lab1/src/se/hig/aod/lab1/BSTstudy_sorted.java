@@ -1,6 +1,5 @@
 package se.hig.aod.lab1;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,16 +8,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-public class BSTstudy {
+public class BSTstudy_sorted {
     public static void main(String[] args) throws Exception {
         String path = "unique_integers.txt";
-        // System.out.println("Current working directory: " + new File(".").getAbsolutePath());
 
         List<Integer> elementsToSearchFor = loadListFromFile(path, 2_500_000);
 
-        int[] sizes = { 10_000, 20_000, 40_000, 80_000,
-                160_000, 320_000, 640_000,
-                1_280_000, 2_560_000 };
+        int[] sizes = { 10_000, 20_000 };
 
         System.out.println("N\tTime(ms)");
 
@@ -32,7 +28,7 @@ public class BSTstudy {
 
                 List<Integer> dataList = loadListFromFile(path, N); // Skapar en List med N antal element
 
-                Collections.shuffle(dataList); // Blanda alla element
+                Collections.sort(dataList); // Blanda alla element
 
                 for (int X : dataList) { // För varje element i dataList
                     bst.addElement(X); // Lägg in de i de binära sökträdet
