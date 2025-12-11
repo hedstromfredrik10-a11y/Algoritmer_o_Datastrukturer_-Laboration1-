@@ -19,7 +19,7 @@ public class BSTstudy_shuffle {
     public static void main(String[] args) throws Exception {
         String path = "unique_integers.txt";
 
-        List<Integer> elementsToSearchFor = loadListFromFile(path, 2_500_000);
+        List<Integer> elementsToSearchFor = loadListFromFile(path, 2_560_000);
 
         int[] sizes = { 10_000, 20_000, 40_000, 80_000,
                 160_000, 320_000, 640_000,
