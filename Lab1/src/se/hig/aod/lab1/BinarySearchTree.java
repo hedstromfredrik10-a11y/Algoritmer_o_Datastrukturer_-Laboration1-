@@ -51,7 +51,6 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements Search
         }
 
         if (node.compareTo(root.element) == 0) {
-
             return root.element;
         } else if (node.compareTo(root.element) < 0) {
             return searchElementHelper(root.left, node);
