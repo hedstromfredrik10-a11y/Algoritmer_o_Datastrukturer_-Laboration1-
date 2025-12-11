@@ -35,7 +35,7 @@ public class BSTstudy_sorted {
 
                 List<Integer> dataList = loadListFromFile(path, N); // Skapar en List med N antal element
 
-                Collections.sort(dataList); // Blanda alla element
+                Collections.sort(dataList); // Sortera alla element
 
                 for (int X : dataList) { // För varje element i dataList
                     bst.addElement(X); // Lägg in de i de binära sökträdet
